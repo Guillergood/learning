@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'button.dart';
 import 'input_image.dart';
 import 'input_image_data.dart';
 import 'shared.dart';
@@ -216,29 +215,94 @@ class _InputCameraViewState extends State<InputCameraView> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(height: 24),
-          _image == null ? _imageSvg : _imagePreview,
-          SizedBox(height: 28),
-          if (_showAction) ...[
-            Center(
-              child: NormalPinkButton(
-                text: widget.action,
-                onPressed: widget.onTapAction,
+          InkWell(
+            onTap: _chooseImage,
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(top: 16.0),
+                        child: Text(
+                          'Galería',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10, bottom: 10, left: 20, right: 20),
+                        child: Container(
+                          height: 1,
+                          decoration: const BoxDecoration(
+                            color: Colors.black54,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: Icon(
+                          Icons.photo_rounded,
+                          size: 48,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-            SizedBox(height: 8),
-          ],
-          Center(
-            child: NormalBlueButton(
-              text: 'Choose Image',
-              onPressed: _chooseImage,
-            ),
           ),
-          SizedBox(height: 8),
-          Center(
-            child: NormalBlueButton(
-              text: 'Take Photo',
-              onPressed: _takePhoto,
+          InkWell(
+            onTap: _takePhoto,
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(top: 16.0),
+                        child: Text(
+                          'Cámara',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10, bottom: 10, left: 20, right: 20),
+                        child: Container(
+                          height: 1,
+                          decoration: const BoxDecoration(
+                            color: Colors.black54,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: Icon(
+                          Icons.camera_alt,
+                          size: 48,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
         ],
